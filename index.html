@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사업개발/기획 포트폴리오</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+    --bg:#0F0F0F;--card:#1A1A1A;--ink:#F5F5F5;--sub:#A3A3A3;--muted:#737373;
+    --line:#262626;--ls:#1F1F1F;
+    --pr:#3B82F6;--pd:#2563EB;--pl:rgba(59,130,246,0.1);--pm:rgba(59,130,246,0.05);
+    --accent:#F59E0B;--al:rgba(245,158,11,0.08);
+    --r:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+h1,h2,h3,h4{font-weight:700;letter-spacing:-0.025em}
+a{color:var(--pr);text-decoration:none}
+
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+aside{background:var(--card);border-right:1px solid var(--line);padding:2rem 1.2rem;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+.sb-top{flex:1}
+.brand-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--pr),var(--pd));display:flex;align-items:center;justify-content:center;font-size:14px;margin-bottom:0.5rem;box-shadow:0 2px 8px -2px rgba(59,130,246,0.4)}
+.brand .name{font-size:1rem;font-weight:800;color:var(--ink)}
+.brand .pos{font-size:0.65rem;color:var(--pr);font-weight:600;background:var(--pl);padding:0.15rem 0.4rem;border-radius:4px;display:inline-block;margin-top:0.25rem}
+.brand .sub-role{font-size:0.68rem;color:var(--sub);margin-top:0.2rem;line-height:1.4}
+
+nav{display:flex;flex-direction:column;gap:1px;margin-top:1.5rem}
+nav a{font-size:0.75rem;color:var(--muted);padding:0.45rem 0.6rem;border-radius:6px;cursor:pointer;transition:all 0.15s;font-weight:500;display:flex;align-items:center;gap:0.5rem}
+nav .d{width:4px;height:4px;border-radius:50%;background:var(--muted);opacity:0.3;transition:all 0.15s;flex-shrink:0}
+nav a:hover{background:var(--ls);color:var(--ink)}
+nav a.active{background:var(--pm);color:var(--pr);font-weight:600}
+nav a.active .d{background:var(--pr);opacity:1;box-shadow:0 0 0 3px rgba(59,130,246,0.15)}
+
+.sb-btm{padding-top:0.8rem;border-top:1px solid var(--line);margin-top:1.2rem}
+.cl{font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);font-weight:600;margin-bottom:0.3rem}
+.ci{font-size:0.7rem;color:var(--sub);line-height:1.8}
+
+main{padding:2.5rem 3rem;max-width:1060px}
+section{display:none;animation:fu 0.35s ease}
+section.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.eyebrow{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--pr);font-weight:700;margin-bottom:0.4rem}
+.h1{font-size:1.75rem;font-weight:800;line-height:1.25;margin-bottom:0.5rem;letter-spacing:-0.035em}
+.h1 .em{background:linear-gradient(135deg,#3B82F6,#60A5FA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lead{font-size:0.85rem;color:var(--sub);line-height:1.8;max-width:680px;margin-bottom:2rem}
+.label{font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:0.4rem}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:0.6rem}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.2rem 1.3rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.2rem;transition:all 0.2s}
+.card:hover{border-color:rgba(59,130,246,0.25);box-shadow:0 4px 16px -4px rgba(0,0,0,0.3);transform:translateY(-1px)}
+.card h4{font-size:0.82rem;margin-bottom:0.3rem}
+.card p{font-size:0.75rem;color:var(--sub);line-height:1.65}
+
+.cover{display:flex;flex-direction:column;justify-content:center;min-height:75vh}
+.cover-sub{font-size:0.95rem;color:var(--sub);margin-top:0.6rem;line-height:1.7}
+.cover-meta{margin-top:2.5rem;display:flex;gap:2rem;font-size:0.72rem;color:var(--muted)}
+.cover-meta span{display:flex;align-items:center;gap:0.3rem}
+.cover-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--pr)}
+.title-big{font-size:2.2rem;font-weight:800;letter-spacing:-0.04em;line-height:1.2}
+.title-big .em{background:linear-gradient(135deg,#3B82F6,#60A5FA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:1.5rem 0}
+.flow-step{text-align:center;padding:1rem 0.8rem;position:relative}
+.flow-step::after{content:'\2192';position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:0.9rem;font-weight:700}
+.flow-step:last-child::after{display:none}
+.flow-num{font-size:0.55rem;font-weight:700;color:var(--pr);letter-spacing:0.08em;margin-bottom:0.3rem}
+.flow-title{font-size:0.8rem;font-weight:700;margin-bottom:0.2rem}
+.flow-desc{font-size:0.68rem;color:var(--sub);line-height:1.5}
+
+.case{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.6rem 1.8rem;margin-bottom:1rem}
+.case-badge{display:inline-block;font-size:0.58rem;font-weight:700;background:linear-gradient(135deg,var(--pr),var(--pd));color:white;padding:0.12rem 0.45rem;border-radius:999px;letter-spacing:0.04em}
+.case-title{font-size:1.1rem;font-weight:800;margin:0.3rem 0 0.15rem;letter-spacing:-0.02em}
+.case-sub{font-size:0.78rem;color:var(--sub);margin-bottom:1.2rem;line-height:1.55}
+.case-section{margin-bottom:1rem}
+.case-section:last-child{margin-bottom:0}
+.case-section-title{font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:700;color:var(--pr);margin-bottom:0.35rem;display:flex;align-items:center;gap:0.3rem}
+.case-section-title .star{color:var(--accent)}
+.case-section p,.case-section li{font-size:0.78rem;color:var(--sub);line-height:1.7}
+.case-section ul{margin:0;padding-left:1rem}
+.case-section li{margin-bottom:0.15rem}
+
+.tradeoff{background:var(--al);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:0.8rem 1rem;margin-top:0.5rem}
+.tradeoff-label{font-size:0.58rem;font-weight:700;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.25rem}
+.tradeoff p{font-size:0.75rem;color:var(--ink);line-height:1.6}
+
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;margin-top:0.5rem}
+.result-item{background:var(--pl);border:1px solid rgba(59,130,246,0.15);border-radius:8px;padding:0.7rem 0.8rem;text-align:center}
+.result-v{font-size:1.1rem;font-weight:800;color:var(--pr)}
+.result-l{font-size:0.65rem;color:var(--sub);margin-top:0.15rem}
+
+.cap-pill{display:flex;align-items:center;gap:0.3rem;padding:0.5rem 0.7rem;background:var(--card);border:1px solid var(--line);border-radius:8px;font-size:0.7rem;font-weight:600;color:var(--ink);text-align:center;justify-content:center}
+.cap-pill .icon{font-size:0.85rem}
+
+.footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+.quote{background:var(--pl);border-left:3px solid var(--pr);border-radius:0 8px 8px 0;padding:1rem 1.2rem;margin:1.2rem 0;font-size:0.88rem;font-weight:600;color:var(--ink);line-height:1.5}
+
+/* Slide Gallery */
+.slide-gallery{margin-top:1rem;margin-bottom:0.5rem}
+.slide-gallery-title{font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.3rem}
+.slide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem}
+.slide-item{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);cursor:pointer;transition:all 0.2s;background:var(--card)}
+.slide-item:hover{border-color:rgba(59,130,246,0.3);box-shadow:0 4px 16px -4px rgba(0,0,0,0.4);transform:translateY(-1px)}
+.slide-item img{width:100%;height:auto;display:block}
+.slide-caption{padding:0.4rem 0.6rem;font-size:0.65rem;color:var(--sub);background:var(--card);border-top:1px solid var(--line)}
+.slide-caption strong{color:var(--ink);font-weight:600}
+
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:1000;justify-content:center;align-items:center;cursor:zoom-out;padding:2rem}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95vw;max-height:92vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
+.lightbox-close{position:absolute;top:1rem;right:1.5rem;color:white;font-size:1.5rem;cursor:pointer;font-weight:300;opacity:0.7;transition:opacity 0.15s}
+.lightbox-close:hover{opacity:1}
+
+/* Dashboard embed */
+.dashboard-embed{margin-top:1rem;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.dashboard-embed iframe{width:100%;height:500px;border:none}
+.dashboard-link{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.72rem;color:var(--pr);margin-top:0.4rem;font-weight:600}
+
+.closing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
+.closing-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem 1.4rem}
+.closing-card h4{font-size:0.85rem;margin-bottom:0.4rem;color:var(--pr)}
+.closing-card p{font-size:0.78rem;color:var(--sub);line-height:1.7}
+
+@media(max-width:900px){
+    .layout{grid-template-columns:1fr}
+    aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line)}
+    main{padding:1.5rem 1.2rem}
+    .g2,.g3,.g5,.flow,.result-grid,.closing-grid{grid-template-columns:1fr}
+    .title-big{font-size:1.5rem}
+    .h1{font-size:1.3rem}
+    .flow-step::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+<aside>
+    <div class="sb-top">
+        <div class="brand">
+            <div class="brand-icon">📐</div>
+            <div class="name">포트폴리오</div>
+            <div class="pos">사업개발 / 기획</div>
+            <div class="sub-role">버티컬 비즈니스팀 지원</div>
+        </div>
+        <nav>
+            <a data-section="cover" class="active"><span class="d"></span>Cover</a>
+            <a data-section="summary"><span class="d"></span>Executive Summary</a>
+            <a data-section="approach"><span class="d"></span>My Approach</a>
+            <a data-section="case1"><span class="d"></span>Case 1 · 클로바더빙</a>
+            <a data-section="case2"><span class="d"></span>Case 2 · Meet On</a>
+            <a data-section="case3"><span class="d"></span>Case 3 · One Number</a>
+            <a data-section="case4"><span class="d"></span>Case 4 · Works Project</a>
+            <a data-section="closing"><span class="d"></span>Closing</a>
+        </nav>
+    </div>
+    <div class="sb-btm">
+        <div class="cl">네이버클라우드 · 4년차</div>
+        <div class="ci">Global SaaS 사업기획<br>B2B SaaS · AI · 제품 전략</div>
+    </div>
+</aside>
+
+<main>
+
+<!-- ===== 1. COVER ===== -->
+<section id="cover" class="active">
+    <div class="cover">
+        <div class="eyebrow">Business Development &amp; Strategy Portfolio</div>
+        <h1 class="title-big">
+            분절된 사업 경험을<br>
+            <span class="em">하나의 수익화 사이클로 연결하고 싶습니다.</span>
+        </h1>
+        <p class="cover-sub">
+            기획·전략·제휴·실행의 각 단계를 개별 프로젝트에서 경험해 왔습니다.<br>
+            이제 이 경험들을 수익화라는 하나의 목표 아래, 하나의 사이클로 직접 연결하려 합니다.
+        </p>
+        <div class="cover-meta">
+            <span><span class="dot"></span>네이버클라우드 Global SaaS 사업기획 4년차</span>
+            <span><span class="dot"></span>수익화 전략 · 제휴 · 제품 기획 · 데이터 설계</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 2. EXECUTIVE SUMMARY ===== -->
+<section id="summary">
+    <div class="eyebrow">Executive Summary</div>
+    <h1 class="h1">사업의 <span class="em">각 단계를 나누어</span> 경험해 왔습니다.</h1>
+    <p class="lead">
+        경영진 직속 조직에서 수익 구조 설계, 제휴 협상, 제품 기획, 실행 관리, 성과 지표 통합까지<br>
+        사업 사이클의 각 단계를 개별 과제 단위로 수행하며 구조적으로 사고하는 기반을 쌓았습니다.
+    </p>
+
+    <div class="label">경험 영역 — 사업 사이클 관점</div>
+    <div class="g5" style="margin-bottom:2rem;">
+        <div class="cap-pill"><span class="icon">🎯</span>전략 / 수익 구조</div>
+        <div class="cap-pill"><span class="icon">🤝</span>사업개발 / 제휴</div>
+        <div class="cap-pill"><span class="icon">📦</span>제품 기획</div>
+        <div class="cap-pill"><span class="icon">⚙️</span>실행 / 계약</div>
+        <div class="cap-pill"><span class="icon">📊</span>데이터 / 의사결정</div>
+    </div>
+
+    <div class="label">핵심 프로젝트</div>
+    <div class="g2">
+        <div class="card">
+            <h4>클로바더빙 유료화 전략</h4>
+            <p>약 44% 사용자 이탈 데이터를 분석하여 문제를 가격이 아닌 '사용자 전환 구조'로 재정의하고, 전환 트리거 기반 수익화 설계 및 신규 수익 구조를 설계</p>
+        </div>
+        <div class="card">
+            <h4>Meet On (화상회의 SDK)</h4>
+            <p>외부 SDK 도입을 위해 품질·가격뿐 아니라 China Risk까지 포함한 리스크를 종합 분석하고, 공급사 실무 협상을 통해 약 3억 규모 계약 승인 획득</p>
+        </div>
+        <div class="card">
+            <h4>One Number</h4>
+            <p>조직별로 분산된 데이터 소스와 상이한 KPI 산식 문제를 확인, 성과 지표 통합을 위한 데이터 구조를 설계하고 상품 평가 프레임워크를 구축</p>
+        </div>
+        <div class="card">
+            <h4>Works Project</h4>
+            <p>업무관리 도구 시장을 업무 단계 관점으로 구조화하고, WORKS 플랫폼 내 기능 통합 방향의 제품 기획 및 단계별 전략 로드맵을 설계</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 3. MY APPROACH ===== -->
+<section id="approach">
+    <div class="eyebrow">My Approach</div>
+    <h1 class="h1">모든 프로젝트를 <span class="em">동일한 구조</span>로 접근했습니다.</h1>
+    <p class="lead">
+        문제 정의 → 판단 기준 설정 → 실행 → 결과 연결까지의 흐름을 만들어왔습니다.<br>
+        사업을 개별 기능이 아닌 '사용자 흐름과 연결된 수익 구조'로 이해하고,<br>
+        그 과정에서 발생하는 트레이드오프를 실제 경험을 통해 고민해 왔습니다.
+    </p>
+
+    <div class="quote">
+        "단순히 매출만을 기준으로 판단하기보다<br>
+        사용자 흐름과 기존 구조까지 함께 고려하여 수익화 전략을 설계합니다."
+    </div>
+
+    <div class="flow">
+        <div class="flow-step">
+            <div class="flow-num">STEP 01</div>
+            <div class="flow-title">문제 정의</div>
+            <div class="flow-desc">표면적 현상이 아닌<br>구조적 원인을 식별</div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-num">STEP 02</div>
+            <div class="flow-title">판단 기준 설정</div>
+            <div class="flow-desc">트레이드오프 요소를<br>명시적으로 정리</div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-num">STEP 03</div>
+            <div class="flow-title">실행</div>
+            <div class="flow-desc">유관부서 조율과<br>리스크 관리 병행</div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-num">STEP 04</div>
+            <div class="flow-title">결과 연결</div>
+            <div class="flow-desc">의사결정 기준으로<br>활용 가능한 산출물</div>
+        </div>
+    </div>
+
+    <div class="g3" style="margin-top:1.5rem;">
+        <div class="card">
+            <h4>🔍 사용자 흐름 기반 수익화 사고</h4>
+            <p>매출 숫자가 아닌, 사용자의 전환 흐름에서 수익화 기회를 포착합니다. 클로바더빙에서는 이탈 원인을 "가격"이 아닌 "전환 구조"로 정의하며, 단기 매출이 아닌 전환율과 유지율을 함께 고려해야 지속 가능한 수익 구조가 만들어진다는 점을 경험했습니다.</p>
+        </div>
+        <div class="card">
+            <h4>⚖️ 트레이드오프 판단</h4>
+            <p>매출 극대화 vs 사용자 유지, 사용자 유입 확대 vs 수익성, 기능 확장 vs 사용성. 앱마켓 운영에서는 무료/유료 플랜 동시 구성 시 카니발라이제이션 영향이 기능 구성과 사용자층에 따라 달라질 수 있다는 점을 실제 운영에서 체감했습니다.</p>
+        </div>
+        <div class="card">
+            <h4>🛠️ 실행 가능성 고려</h4>
+            <p>프로젝트 관리도구 기획에서는 별도 SaaS 도입에 대한 사용자 부담을 확인하고, 기존 플랫폼 내 기능 통합 방향을 선택했습니다. 사용자 편익 기반 접근이 결국 서비스 사용성과 확장성으로 이어진다는 점을 경험했습니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CASE 1: 클로바더빙 ===== -->
+<section id="case1">
+    <div class="eyebrow">Case Study 01 — 사업개발·제휴</div>
+    <div class="case">
+        <span class="case-badge">STRATEGY</span>
+        <div class="case-title">클로바더빙 유료화 전략 — 사용자 전환 구조 기반 수익화 설계</div>
+        <div class="case-sub">약 44%의 사용자가 이탈했다. 문제를 가격이 아닌 '전환 구조'로 재정의했다.</div>
+
+        <div class="case-section">
+            <div class="case-section-title">📌 Context</div>
+            <p>클로바더빙은 유/무료 서비스가 분리 운영되고 있었으며, 지속적인 매출 확대가 정체된 상황이었습니다. 유/무료 통합 유료화를 통해 수익성을 개선해야 하는 과제가 주어졌습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title"><span class="star">⭐</span> Problem Definition</div>
+            <p>이전 유료화 성과를 파악하며 약 44%의 사용자 이탈이 발생한 데이터를 분석했습니다. 이를 통해 <strong>문제를 가격이 아닌 '사용자 전환 구조'의 문제로 정의</strong>하는 근거 자료를 제시하여, 소프트랜딩 전략 수립에 기여했습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">⚖️ Key Considerations</div>
+            <div class="tradeoff">
+                <div class="tradeoff-label">Tradeoff Analysis</div>
+                <p><strong>매출 극대화 vs 사용자 유지</strong> — 단기 매출이 아닌 전환율과 유지율을 함께 고려해야 지속 가능한 수익 구조가 만들어진다는 점을 근거로 소프트랜딩 전략을 수립</p>
+                <p style="margin-top:0.3rem;"><strong>단순 가격 인하 vs 전환 트리거 설계</strong> — 가격을 낮추는 것은 마진 훼손. 이용자 데이터 기반으로 유료 전환을 유도할 수 있는 적정 쿼터 및 기능을 분석하여 플랜 구조를 재설계</p>
+                <p style="margin-top:0.3rem;"><strong>투입 자원 효율화 vs 회수 가능성</strong> — 수익 구조별 모델링을 통해 투입 자원의 효율화 및 회수 가능성 중심으로 수익 구조를 설계</p>
+            </div>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">🎯 My Role</div>
+            <ul>
+                <li>유료화 및 사용자 전환 전략 수립 (데이터 기반 근거자료 지원)</li>
+                <li>플랜 구조 재설계 (플랜별 적절한 이용 쿼터 분배 근거자료 지원)</li>
+                <li>신규 사업 모델 수익 구조 설계 (<strong>과제 리드</strong>)</li>
+            </ul>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">🔧 Approach</div>
+            <ul>
+                <li>이전 유료화 성과를 파악하며 약 44%의 사용자 이탈이 발생한 데이터를 분석, 문제를 가격이 아닌 '사용자 전환 구조'의 문제로 정의하는 근거 자료를 제시하여 소프트랜딩 전략 수립에 기여</li>
+                <li>이용자 데이터 기반으로 유료 전환을 유도할 수 있는 적정 쿼터 및 기능을 분석하여 플랜 구조 재설계의 근거 자료로 활용</li>
+                <li>수익 구조별 모델링 결과를 통해 투입 자원의 효율화 및 회수 가능성 중심으로 수익 구조를 설계</li>
+            </ul>
+        </div>
+
+        <div class="case-section slide-gallery">
+            <div class="slide-gallery-title">📎 검토 자료 (실제 산출물)</div>
+            <div class="slide-grid">
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/dubbing_conversion.png" alt="기존 유료화 정책" loading="lazy">
+                    <div class="slide-caption"><strong>기존 유료화 정책</strong> — 유료화 이후 월간 사용자 44.8% 감소, 이탈 원인 분석</div>
+                </div>
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/dubbing_competitor.png" alt="소프트 랜딩 정책" loading="lazy">
+                    <div class="slide-caption"><strong>소프트 랜딩 정책</strong> — 기존 고객 충격 최소화 및 보이스 크리에이터 수익 창출 구조</div>
+                </div>
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/dubbing_plan.png" alt="요금제 정책 고도화" loading="lazy">
+                    <div class="slide-caption"><strong>요금제 정책 고도화</strong> — B2C 유/무료 통합 상품, 타깃 페르소나 기반 플랜 재설계</div>
+                </div>
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/dubbing_pnl.png" alt="보이스메이커 R/S 정책" loading="lazy">
+                    <div class="slide-caption"><strong>보이스메이커 R/S 정책</strong> — 제작 비용 회수 후 7:3 수익 Share 구조</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">💡 Decision</div>
+            <p>가격 인하가 아닌 <strong>'사용자 전환 구조' 중심의 수익화 재정의</strong>를 선택했습니다. 이용자 데이터에 기반하여 전환 트리거를 설계하고, 플랜별 적절한 이용 쿼터를 분배하는 구조를 제안했습니다. 수익 구조별 모델링 결과를 통해 투입 자원의 효율화와 회수 가능성을 검증하고, 상위 보고를 통해 PO 승인을 확보했습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">📈 Result</div>
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-v">PO 승인</div>
+                    <div class="result-l">수익 구조 재정의<br>상위 보고 승인 완료</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-v">~136억</div>
+                    <div class="result-l">5년 예상 총매출<br>수익 모델 시뮬레이션</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-v">28.63%</div>
+                    <div class="result-l">전환율 시뮬레이션<br>23,460명 대상 분석</div>
+                </div>
+            </div>
+            <p style="margin-top:0.6rem;font-size:0.75rem;color:var(--muted);">* 조직 R&amp;R 정리 이슈로 프로젝트 이관되었으나, 설계한 전략 프레임이 사업 연속성의 기반이 되었습니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CASE 2: Meet On ===== -->
+<section id="case2">
+    <div class="eyebrow">Case Study 02 — 기획·실행 관리</div>
+    <div class="case">
+        <span class="case-badge">EXECUTION</span>
+        <div class="case-title">화상회의 신규 상품 — 외부 SDK 선정 및 계약</div>
+        <div class="case-sub">품질과 가격뿐 아니라, 개인정보 이슈 및 China Risk까지 포함한 리스크를 종합적으로 분석했다.</div>
+
+        <div class="case-section">
+            <div class="case-section-title">📌 Context</div>
+            <p>화상회의 기능 고도화를 위해 외부 SDK 도입이 필요한 상황이었습니다. 자체 개발은 시간·비용 면에서 비현실적이었고, 외부 SDK를 도입하되 품질·비용·리스크를 종합적으로 검토하여 공급사를 선정해야 했습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title"><span class="star">⭐</span> Problem Definition</div>
+            <p>"어떤 SDK가 좋은가"가 아니라, <strong>"품질과 가격뿐 아니라 개인정보 이슈 및 China Risk까지 포함한 리스크를 어떻게 종합적으로 분석하고, 유관 조직의 검토 의견을 어떻게 종합할 것인가"</strong>가 핵심 문제였습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">⚖️ Key Considerations</div>
+            <div class="tradeoff">
+                <div class="tradeoff-label">Tradeoff Analysis</div>
+                <p><strong>비용 절감 vs 품질 리스크</strong> — 저가 SDK 선택 시 비용은 줄지만, 기존 솔루션 대비 품질 열위 시 서비스 경쟁력 상실</p>
+                <p style="margin-top:0.3rem;"><strong>빠른 도입 vs China Risk</strong> — 기술력이 우수한 공급사라도 개인정보 이슈 및 규제 리스크가 존재하며, 법무·보안 관점에서의 종합 검토가 필수</p>
+                <p style="margin-top:0.3rem;"><strong>내부 예산 vs 공급사 조건</strong> — 내부 의견과 예산 등을 종합하여 공급사와의 실무 협상을 통해 계약을 구체화해야 하는 상황</p>
+            </div>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">🎯 My Role</div>
+            <ul>
+                <li>내부 유관 조직 검토 의견 종합 (<strong>과제 리드</strong>)</li>
+                <li>구매 계약을 위한 공급사 실무 협상 진행 (<strong>과제 리드</strong>)</li>
+            </ul>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">🔧 Approach</div>
+            <ul>
+                <li>화상회의 기능 고도화를 위해 외부 SDK 도입을 검토하며, 품질과 가격뿐 아니라 개인정보 이슈 및 China Risk까지 포함한 리스크를 종합적으로 분석하고 유관 조직 검토 의견을 종합하여 리스크 관리 방안을 마련</li>
+                <li>내부 의견과 예산 등을 종합하여, 공급사와의 실무 협상을 진행하고 상위 보고를 통한 계약 구체화에 기여</li>
+            </ul>
+        </div>
+
+        <div class="case-section slide-gallery">
+            <div class="slide-gallery-title">📎 검토 자료 (실제 산출물)</div>
+            <div class="slide-grid">
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/meeton_background.png" alt="SDK 구매 배경" loading="lazy">
+                    <div class="slide-caption"><strong>구매 배경</strong> — 가상배경/뷰티효과 기능 고도화를 위한 외부 SDK 도입 필요성</div>
+                </div>
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/meeton_review.png" alt="솔루션 비교 검토" loading="lazy">
+                    <div class="slide-caption"><strong>솔루션 비교 검토</strong> — 가격·품질·리스크 종합 분석 후 최적 SDK 선정</div>
+                </div>
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/meeton_risk.png" alt="China Risk 검토" loading="lazy">
+                    <div class="slide-caption"><strong>China Risk 대응</strong> — 유관부서(법무·보안·개인정보팀) 검토 의견 종합, 서버통신 모니터링·비밀유지조항·개인정보 유출 방지 방안</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">💡 Decision</div>
+            <p>단순 가격 비교가 아닌, <strong>리스크를 종합적으로 분석한 결과를 기반으로 공급사를 선정</strong>했습니다. 최종 선정 SDK(연간 약 2억 7천만 원)를 선정하되, China Risk에 대해 서버통신 모니터링, 개인정보 유출 방지 조항 삽입, 비밀유지 계약 조건을 확보하는 방안을 마련했습니다. 유관 조직의 검토 의견을 종합하여 리스크 관리 방안을 마련하고, 내부 의견과 예산을 반영한 실무 협상을 직접 진행하여 상위 보고를 통해 대표이사 승인을 획득했습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">📈 Result</div>
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-v">대표이사 승인</div>
+                    <div class="result-l">SDK 공급 계약<br>상위 보고 승인 획득</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-v">China Risk 대응</div>
+                    <div class="result-l">3개 부서 검토 종합<br>리스크 관리 방안 확정</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-v">실무 협상</div>
+                    <div class="result-l">공급사 직접 협상<br>계약 구체화 기여</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CASE 3: One Number ===== -->
+<section id="case3">
+    <div class="eyebrow">Case Study 03 — 성과·지표 관리</div>
+    <div class="case">
+        <span class="case-badge">DATA</span>
+        <div class="case-title">성과 데이터 공통화 기준 수립 및 상품 프레임워크 설계</div>
+        <div class="case-sub">동일 KPI임에도 산식과 기준이 달라 서로 다른 결과가 도출되고 있었다.</div>
+
+        <div class="case-section">
+            <div class="case-section-title">📌 Context</div>
+            <p>조직별로 데이터 소스가 분산되어 있었고, 동일 KPI임에도 산식과 기준이 달라 서로 다른 결과가 도출되는 상황이었습니다. 경영진의 의사결정을 위한 통일된 기준이 부재하여, 상품 전략 의사결정에 혼선이 발생하고 있었습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title"><span class="star">⭐</span> Problem Definition</div>
+            <p>"대시보드가 없다"가 문제가 아니었습니다. <strong>조직별로 데이터 소스가 분산되어 있고, 동일 KPI임에도 산식과 기준이 달라 서로 다른 결과가 도출되고 있다</strong>는 것이 본질적 문제였습니다. 단일 기준의 성과 지표 체계가 없으면, 상품 Fadeout이나 리소스 재조정과 같은 전략 의사결정 자체가 불가능한 상태였습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">⚖️ Key Considerations</div>
+            <div class="tradeoff">
+                <div class="tradeoff-label">Tradeoff Analysis</div>
+                <p><strong>완벽한 데이터 정합성 vs 속도</strong> — 모든 데이터 소스를 완벽히 통합하려면 개발 리소스와 시간이 필요. 정량화 가능한 핵심 지표부터 우선 통합하여 빠르게 가치 제공</p>
+                <p style="margin-top:0.3rem;"><strong>조직별 고유 기준 존중 vs 공통 기준 수립</strong> — 각 부서의 고유 지표 정의를 존중하되, 경영진 보고 및 상품 평가에는 공통화된 산식과 기준을 적용하여 비교 가능성 확보</p>
+                <p style="margin-top:0.3rem;"><strong>정성 평가 vs 정량 평가</strong> — 정량화 가능한 지표(매출, 수익성, 성장성)를 구분하고, 정량 평가 기반 상품 프레임워크를 설계하여 객관적 의사결정 가능하도록 구성</p>
+            </div>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">🎯 My Role</div>
+            <ul>
+                <li>성과 지표 통합을 위한 데이터 구조 설계 (<strong>과제 리드</strong>)</li>
+                <li>데이터 구조 기반 상품 평가 프레임워크 설계 (평가 항목 구체화 <strong>리드</strong> / 프레임워크 설계 지원)</li>
+                <li>지표화 및 대시보드 제작 (지표화 <strong>리드</strong> / 대시보드 제작 지원)</li>
+            </ul>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">🔧 Approach</div>
+            <ul>
+                <li>조직별로 데이터 소스가 분산되어 있고 동일 KPI임에도 산식과 기준이 달라 서로 다른 결과가 도출되는 문제를 확인하여 성과 지표 통합을 위한 데이터 구조를 설계</li>
+                <li>데이터 구조에 따라 정량화 가능한 지표들을 구분하고, 매출·수익성·성장성 기준 등 정량화 가능한 평가항목 선정에 기여</li>
+                <li>정의된 전략 방향 및 평가 지표에 구성되는 핵심 산식을 정의하고 대시보드 제작에 기여</li>
+            </ul>
+        </div>
+
+        <div class="case-section slide-gallery">
+            <div class="slide-gallery-title">📎 검토 자료 (실제 산출물)</div>
+            <div class="slide-grid">
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/framework_scoring.png" alt="상품 프레임워크 스코어링" loading="lazy">
+                    <div class="slide-caption"><strong>Financial Scoring (1)</strong> — 매출 성장률·사업 규모·수익 구조·수익성 개선·투자 대비 매출 기여도 5개 지표 설계</div>
+                </div>
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/framework_scoring2.png" alt="상품 프레임워크 스코어링 Lv2" loading="lazy">
+                    <div class="slide-caption"><strong>Financial Scoring (2)</strong> — 매출 변동성·고객 집중도·손실 심각도 보정 지표 및 최종 유형 분류 체계</div>
+                </div>
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/framework_sample.png" alt="프레임워크 적용 샘플" loading="lazy">
+                    <div class="slide-caption"><strong>적용 샘플</strong> — 실제 상품에 프레임워크를 적용한 스코어링 시뮬레이션 결과 (더미 데이터)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-section slide-gallery">
+            <div class="slide-gallery-title">📊 One Number 대시보드 (실제 산출물)</div>
+            <p style="color:#888; font-size:0.85rem; margin:-0.5rem 0 1rem 0;">※ 본 대시보드 및 프레임워크 수치는 포트폴리오 공개를 위해 더미 데이터로 교체하였습니다.</p>
+            <div style="width:100%; border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.15);">
+                <iframe src="dashboard_dummy.html" style="width:100%; height:820px; border:none;" loading="lazy" title="One Number Dashboard"></iframe>
+            </div>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">💡 Decision</div>
+            <p><strong>조직별 분산된 데이터 소스를 공통 기준으로 통합</strong>하는 방향을 선택했습니다. 정량화 가능한 핵심 지표부터 산식과 기준을 공통화하고, 이를 기반으로 3 Layer Scoring 체계(Strategic 35점 + Market 30점 + Financial 30점 + Bonus 5점 = 100점)의 상품 평가 프레임워크를 설계하여 경영진의 의사결정에 실제 기준 자료로 활용될 수 있도록 구성했습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">📈 Result</div>
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-v">KPI 대시보드</div>
+                    <div class="result-l">공통 기준 기반<br>대시보드 구축</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-v">상품 Fadeout</div>
+                    <div class="result-l">제품 전략 의사결정 시<br>실제 기준 자료로 활용</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-v">리소스 재조정</div>
+                    <div class="result-l">일부 상품 Fadeout 및<br>리소스 재조정에 기여</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CASE 4: Works Project ===== -->
+<section id="case4">
+    <div class="eyebrow">Case Study 04 — 제품 기획</div>
+    <div class="case">
+        <span class="case-badge">PRODUCT</span>
+        <div class="case-title">WORKS Project — 업무관리 도구 제품 기획 및 시장 분석</div>
+        <div class="case-sub">별도 SaaS 도입이 아닌, 기존 플랫폼 내 기능 통합 방향을 선택했다.</div>
+
+        <div class="case-section">
+            <div class="case-section-title">📌 Context</div>
+            <p>WORKS 플랫폼의 업무관리 기능 확장이 필요한 상황이었습니다. 글로벌 시장에서 Monday.com, ClickUp 등 범용 업무관리 도구가 커뮤니케이션 영역(메일·메신저)과의 통합을 통해 빠르게 성장하고 있었고, 국내에서도 메신저+업무관리 세트형 시장 진출이 활발한 상태였습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title"><span class="star">⭐</span> Problem Definition</div>
+            <p>"어떤 업무관리 도구를 만들 것인가"가 아니라, <strong>"업무 요청의 발생–수집/분류–수행 단계 중 어디를 타겟으로 할 것인지, WORKS의 강점 영역에서 Up-selling할 것인지 신규 시장에 진출할 것인지"</strong>가 핵심 문제였습니다. 업무관리 도구 시장의 구조와 WORKS의 포지셔닝을 정의해야 했습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">⚖️ Key Considerations</div>
+            <div class="tradeoff">
+                <div class="tradeoff-label">Tradeoff Analysis</div>
+                <p><strong>Up-selling vs 신규 시장 진출</strong> — WORKS 기존 고객 대상 업무관리 기능 Up-selling은 확실한 고객 기반이 있으나 시장 규모가 제한적. 신규 시장 진출은 추가 매출 확보 가능하나 진입 비용 발생</p>
+                <p style="margin-top:0.3rem;"><strong>내부 이벤트 수집 vs 외부 이벤트 수집</strong> — 메일·메신저 등 WORKS 내부 이벤트 기반 자동화를 우선할 것인지, 외부 3rd party 도구 연동을 통한 확장을 우선할 것인지</p>
+                <p style="margin-top:0.3rem;"><strong>별도 SaaS vs 플랫폼 통합</strong> — 별도 SaaS 도입 시 사용자 부담이 크고, 기존 플랫폼 내 기능 통합이 사용자 편익과 확장성 측면에서 유리</p>
+            </div>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">🎯 My Role</div>
+            <ul>
+                <li>프로젝트 관리도구 상위 기획서 제작 (제품 컨셉 아이디어 및 리서치 / 내부 사용성 데이터 분석 지원)</li>
+                <li>사용자/파트너 인터뷰 진행 및 핵심 요구사항 도출 및 개발 우선순위 조정 (<strong>과제 리드</strong>)</li>
+            </ul>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">🔧 Approach</div>
+            <ul>
+                <li>데스크 리서치를 통해 협업도구의 관리 니즈가 커뮤니케이션에서 실행 과정 전반으로 확대된다는 인사이트를 발굴하여 상위 기획서 제품 컨셉 도출에 기여</li>
+                <li>사용자/파트너사 인터뷰를 통해, 별도의 SaaS를 도입하는 것에 대한 거부감과 시장 성숙도가 낮음을 근거로 세부 기능 고도화보다는 기존 협업툴과의 연동을 우선순위 과제로 진행하는데 기여</li>
+            </ul>
+        </div>
+
+        <div class="case-section slide-gallery">
+            <div class="slide-gallery-title">📎 검토 자료 (실제 산출물)</div>
+            <div class="slide-grid">
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/works_analysis.png" alt="업무 단계 및 분석 대상 정의" loading="lazy">
+                    <div class="slide-caption"><strong>업무 단계 분석</strong> — 발생–수집/분류–수행 3단계 정의 및 시장 분류</div>
+                </div>
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/works_market_global.png" alt="글로벌 시장 분석" loading="lazy">
+                    <div class="slide-caption"><strong>글로벌 시장 현황</strong> — Monday.com·ClickUp 등 초기 형태 및 확장 전략 분석</div>
+                </div>
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/works_strategy.png" alt="시장 분석 결론" loading="lazy">
+                    <div class="slide-caption"><strong>시장 분석 결론</strong> — Up-selling vs 신규 시장 진출 Option 도출</div>
+                </div>
+                <div class="slide-item" onclick="openLightbox(this)">
+                    <img src="slides/works_roadmap.png" alt="전략 방향성 도출" loading="lazy">
+                    <div class="slide-caption"><strong>전략 방향성 로드맵</strong> — Option별 진입·성장 과제 설계 및 Target 고객군 정의</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">💡 Decision</div>
+            <p>별도 SaaS 도입이 아닌, <strong>WORKS 플랫폼 내 기능 통합 방향</strong>을 선택했습니다. 사용자 부담을 최소화하면서도, 메일·메신저·드라이브 등 WORKS 강점 영역의 내부 이벤트를 Trigger 기반으로 자동 수집하는 구조를 우선 설계하고, 이후 외부 이벤트 수집 및 워크플로 자동화로 확장하는 단계별 로드맵을 제안했습니다.</p>
+        </div>
+
+        <div class="case-section">
+            <div class="case-section-title">📈 Result</div>
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-v">시장 구조화</div>
+                    <div class="result-l">업무 단계 관점<br>시장 분류 체계 수립</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-v">전략 로드맵</div>
+                    <div class="result-l">Option별 진입·성장<br>단계별 과제 설계</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-v">플랫폼 통합</div>
+                    <div class="result-l">사용자 편익 기반<br>기능 통합 방향 확정</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 5. CLOSING ===== -->
+<section id="closing">
+    <div class="eyebrow">Closing</div>
+    <h1 class="h1">분절된 경험을 <span class="em">하나의 사이클로 연결</span>하고 싶습니다.</h1>
+    <p class="lead">
+        사업을 개별 기능이 아닌 '사용자 흐름과 연결된 수익 구조'로 이해하고,<br>
+        그 과정에서 발생하는 트레이드오프를 실제 경험을 통해 고민해 왔습니다.<br>
+        버티컬 비즈니스팀에서 이 경험들을 하나의 수익화 사이클로 연결하려 합니다.
+    </p>
+
+    <div class="quote">
+        "비록 하나의 사업을 end-to-end로 직접 리딩한 경험은 아직 부족하지만,<br>
+        각 단계에서의 경험을 통해 구조적으로 사고할 수 있는 기반을 갖추었다고 생각합니다."
+    </div>
+
+    <div class="closing-grid">
+        <div class="closing-card">
+            <h4>사용자 흐름 기반 수익화</h4>
+            <p>클로바더빙에서는 "가격"이 아닌 "전환 구조"로, 앱마켓 운영에서는 무료/유료 플랜 동시 구성 시 카니발라이제이션 영향을 고민하며, 사용자 흐름 안에서 자연스럽게 수익으로 이어지는 구조를 설계해 왔습니다.</p>
+        </div>
+        <div class="closing-card">
+            <h4>트레이드오프 기반 판단</h4>
+            <p>매출 극대화 vs 사용자 유지, 사용자 유입 vs 수익성, 기능 확장 vs 사용성 — 동일한 구조라도 상황에 따라 다른 결과가 발생할 수 있다는 점을 실제 운영에서 체감하며 판단 기준을 세워 왔습니다.</p>
+        </div>
+        <div class="closing-card">
+            <h4>실행 단계까지 직접 참여</h4>
+            <p>화상회의 SDK에서는 유관 조직 검토 의견 종합과 공급사 실무 협상까지 직접 수행했습니다. 전략을 세우는 데 그치지 않고, 계약 구체화와 상위 보고까지 연결하는 실행력을 갖추고 있습니다.</p>
+        </div>
+        <div class="closing-card">
+            <h4>수익화 사이클 완성을 향해</h4>
+            <p>수익화 기회 발굴부터, 외부 파트너와의 사업개발·제휴를 통해 실제 매출로 연결해 책임지는 경험 — 버티컬 비즈니스팀에서 이러한 경험을 하나의 사이클로 연결하여 실제 매출로 이어지는 사업을 직접 만들어내고 싶습니다.</p>
+        </div>
+    </div>
+</section>
+
+<div class="footer">
+    <div>&copy; 2026 Business Portfolio</div>
+    <div style="font-size:0.6rem;color:var(--muted);">사업개발/기획 · 버티컬 비즈니스팀 지원</div>
+</div>
+</main>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Slide">
+</div>
+
+<script>
+document.querySelectorAll('nav a').forEach(a=>{
+    a.addEventListener('click',()=>{
+        document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
+        document.querySelectorAll('section').forEach(x=>x.classList.remove('active'));
+        a.classList.add('active');
+        document.getElementById(a.dataset.section).classList.add('active');
+        window.scrollTo(0,0);
+    });
+});
+
+function openLightbox(el){
+    const img=el.querySelector('img');
+    document.getElementById('lightbox-img').src=img.src;
+    document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+</script>
+</body>
+</html>
